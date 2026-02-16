@@ -1,0 +1,23 @@
+{
+  "name": "frangoapp",
+  "version": "1.0.0",
+  "description": "Frango - Self-Tutoring Math App with gamified quizzes and interactive simulations",
+  "main": "frontend/script.js",
+  "scripts": {
+    "start": "npx live-server frontend --port=3000",
+    "dev": "npx live-server frontend --port=3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CottonsKaka/FrangoApp.git"
+  },
+  "keywords": ["math", "education", "tutoring", "gamification", "quiz"],
+  "author": "CottonsKaka",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CottonsKaka/FrangoApp/issues"
+  },
+  "homepage": "https://github.com/CottonsKaka/FrangoApp#readme"
+}

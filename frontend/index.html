@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frango - Self-Tutoring Math App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">&#x1D453;</span>
+                <span class="logo-text">Frango</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon">&#9633;</span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-page="modules">
+                    <span class="nav-icon">&#9881;</span>
+                    <span>Modules</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-page="quiz">
+                    <span class="nav-icon">&#9889;</span>
+                    <span>Quiz Arena</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-page="simulation">
+                    <span class="nav-icon">&#9670;</span>
+                    <span>Simulations</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-page="progress">
+                    <span class="nav-icon">&#9650;</span>
+                    <span>Progress</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="avatar">M</div>
+                <div class="user-details">
+                    <span class="user-name">Math Explorer</span>
+                    <span class="user-level">Level 5</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="menu-toggle" id="menuToggle">&#9776;</button>
+            <div class="search-bar">
+                <input type="text" placeholder="Search topics, quizzes..." id="searchInput">
+            </div>
+            <div class="top-bar-actions">
+                <div class="streak-badge">
+                    <span class="streak-fire">&#128293;</span>
+                    <span class="streak-count" id="streakCount">7</span>
+                    <span class="streak-label">day streak</span>
+                </div>
+                <div class="xp-badge">
+                    <span class="xp-star">&#11088;</span>
+                    <span class="xp-count" id="xpCount">1,250</span>
+                    <span class="xp-label">XP</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page: Dashboard -->
+        <section class="page active" id="page-dashboard">
+            <div class="page-header">
+                <h1>Welcome back, Explorer!</h1>
+                <p>Keep up the momentum. You're doing great!</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card stat-purple">
+                    <div class="stat-icon">&#128200;</div>
+                    <div class="stat-value" id="quizzesCompleted">24</div>
+                    <div class="stat-label">Quizzes Completed</div>
+                </div>
+                <div class="stat-card stat-blue">
+                    <div class="stat-icon">&#127919;</div>
+                    <div class="stat-value" id="accuracy">87%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card stat-green">
+                    <div class="stat-icon">&#9201;</div>
+                    <div class="stat-value" id="timeSpent">12h</div>
+                    <div class="stat-label">Time Practiced</div>
+                </div>
+                <div class="stat-card stat-orange">
+                    <div class="stat-icon">&#127942;</div>
+                    <div class="stat-value" id="badgesEarned">8</div>
+                    <div class="stat-label">Badges Earned</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card continue-card">
+                    <h2>Continue Learning</h2>
+                    <div class="continue-items" id="continueItems">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="card leaderboard-card">
+                    <h2>Leaderboard</h2>
+                    <div class="leaderboard-list" id="leaderboardList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="card achievements-card">
+                    <h2>Recent Achievements</h2>
+                    <div class="achievements-list" id="achievementsList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="card daily-challenge-card">
+                    <h2>Daily Challenge</h2>
+                    <div class="daily-challenge" id="dailyChallenge">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Modules -->
+        <section class="page" id="page-modules">
+            <div class="page-header">
+                <h1>Math Modules</h1>
+                <p>Choose a topic to start learning</p>
+            </div>
+            <div class="modules-grid" id="modulesGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Page: Quiz Arena -->
+        <section class="page" id="page-quiz">
+            <div class="page-header">
+                <h1>Quiz Arena</h1>
+                <p>Test your skills and earn XP</p>
+            </div>
+
+            <!-- Quiz Selection -->
+            <div class="quiz-selection" id="quizSelection">
+                <div class="difficulty-selector">
+                    <h3>Choose Difficulty</h3>
+                    <div class="difficulty-options">
+                        <button class="difficulty-btn active" data-difficulty="easy">
+                            <span class="diff-icon">&#127807;</span>
+                            <span>Easy</span>
+                            <span class="diff-xp">+10 XP</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="medium">
+                            <span class="diff-icon">&#128293;</span>
+                            <span>Medium</span>
+                            <span class="diff-xp">+25 XP</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="hard">
+                            <span class="diff-icon">&#9889;</span>
+                            <span>Hard</span>
+                            <span class="diff-xp">+50 XP</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-selector">
+                    <h3>Choose Topic</h3>
+                    <div class="topic-options" id="topicOptions">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-lg start-quiz-btn" id="startQuizBtn">
+                    Start Quiz
+                </button>
+            </div>
+
+            <!-- Active Quiz -->
+            <div class="quiz-active hidden" id="quizActive">
+                <div class="quiz-header">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                    <div class="quiz-meta">
+                        <span class="quiz-question-num" id="quizQuestionNum">1/10</span>
+                        <span class="quiz-timer" id="quizTimer">0:30</span>
+                        <span class="quiz-score">Score: <strong id="quizScore">0</strong></span>
+                    </div>
+                </div>
+                <div class="quiz-body">
+                    <div class="quiz-question" id="quizQuestion"></div>
+                    <div class="quiz-options" id="quizOptions"></div>
+                </div>
+                <div class="quiz-feedback hidden" id="quizFeedback">
+                    <div class="feedback-icon" id="feedbackIcon"></div>
+                    <div class="feedback-text" id="feedbackText"></div>
+                    <div class="feedback-explanation" id="feedbackExplanation"></div>
+                    <button class="btn btn-primary" id="nextQuestionBtn">Next Question</button>
+                </div>
+            </div>
+
+            <!-- Quiz Results -->
+            <div class="quiz-results hidden" id="quizResults">
+                <div class="results-trophy" id="resultsTrophy"></div>
+                <h2 id="resultsTitle"></h2>
+                <div class="results-stats">
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="resultScore"></div>
+                        <div class="result-stat-label">Score</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="resultAccuracy"></div>
+                        <div class="result-stat-label">Accuracy</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="resultXP"></div>
+                        <div class="result-stat-label">XP Earned</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="resultTime"></div>
+                        <div class="result-stat-label">Time</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn-primary" id="retryQuizBtn">Try Again</button>
+                    <button class="btn btn-secondary" id="backToQuizzesBtn">Back to Quizzes</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Simulations -->
+        <section class="page" id="page-simulation">
+            <div class="page-header">
+                <h1>Interactive Simulations</h1>
+                <p>Visualize and explore math concepts</p>
+            </div>
+            <div class="simulation-tabs">
+                <button class="sim-tab active" data-sim="graphing">Function Grapher</button>
+                <button class="sim-tab" data-sim="geometry">Geometry Lab</button>
+                <button class="sim-tab" data-sim="probability">Probability Sim</button>
+            </div>
+
+            <!-- Function Grapher -->
+            <div class="sim-panel active" id="sim-graphing">
+                <div class="sim-controls">
+                    <div class="input-group">
+                        <label for="functionInput">f(x) =</label>
+                        <input type="text" id="functionInput" value="Math.sin(x)" placeholder="e.g., x**2, Math.sin(x)">
+                    </div>
+                    <div class="range-controls">
+                        <div class="input-group">
+                            <label for="xMin">x min</label>
+                            <input type="number" id="xMin" value="-10">
+                        </div>
+                        <div class="input-group">
+                            <label for="xMax">x max</label>
+                            <input type="number" id="xMax" value="10">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="plotBtn">Plot Function</button>
+                </div>
+                <div class="sim-canvas-container">
+                    <canvas id="graphCanvas" width="800" height="500"></canvas>
+                </div>
+            </div>
+
+            <!-- Geometry Lab -->
+            <div class="sim-panel" id="sim-geometry">
+                <div class="sim-controls">
+                    <div class="shape-selector">
+                        <button class="shape-btn active" data-shape="triangle">Triangle</button>
+                        <button class="shape-btn" data-shape="circle">Circle</button>
+                        <button class="shape-btn" data-shape="rectangle">Rectangle</button>
+                    </div>
+                    <div class="shape-inputs" id="shapeInputs">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="btn btn-primary" id="drawShapeBtn">Draw & Calculate</button>
+                </div>
+                <div class="sim-canvas-container">
+                    <canvas id="geometryCanvas" width="800" height="500"></canvas>
+                </div>
+                <div class="geometry-results" id="geometryResults"></div>
+            </div>
+
+            <!-- Probability Simulator -->
+            <div class="sim-panel" id="sim-probability">
+                <div class="sim-controls">
+                    <div class="prob-selector">
+                        <button class="prob-btn active" data-prob="coin">Coin Flip</button>
+                        <button class="prob-btn" data-prob="dice">Dice Roll</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="trialCount">Number of trials</label>
+                        <input type="number" id="trialCount" value="100" min="1" max="10000">
+                    </div>
+                    <button class="btn btn-primary" id="runSimBtn">Run Simulation</button>
+                </div>
+                <div class="sim-canvas-container">
+                    <canvas id="probabilityCanvas" width="800" height="500"></canvas>
+                </div>
+                <div class="probability-results" id="probabilityResults"></div>
+            </div>
+        </section>
+
+        <!-- Page: Progress -->
+        <section class="page" id="page-progress">
+            <div class="page-header">
+                <h1>Your Progress</h1>
+                <p>Track your math mastery journey</p>
+            </div>
+            <div class="progress-overview">
+                <div class="level-card">
+                    <div class="level-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="level-ring-bg"/>
+                            <circle cx="60" cy="60" r="54" class="level-ring-fill" id="levelRingFill"/>
+                        </svg>
+                        <div class="level-number" id="levelNumber">5</div>
+                    </div>
+                    <div class="level-info">
+                        <h3>Math Explorer</h3>
+                        <p><span id="currentXP">1,250</span> / <span id="nextLevelXP">2,000</span> XP</p>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-grid">
+                <div class="card">
+                    <h2>Topic Mastery</h2>
+                    <div class="mastery-list" id="masteryList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>All Badges</h2>
+                    <div class="badges-grid" id="badgesGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast notification container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
